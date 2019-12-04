@@ -63,9 +63,6 @@ Chart.elements.Rectangle.prototype.draw = function() {
   ctx.strokeStyle = vm.borderColor;
   ctx.lineWidth = borderWidth;
 
-  // Corner points, from bottom-left to bottom-right clockwise
-  // | 1 2 |
-  // | 0 3 |
   var corners = [[left, bottom], [left, top], [right, top], [right, bottom]];
 
   // Find first (starting) corner with fallback to 'bottom'
@@ -327,8 +324,8 @@ let chartExample1 = {
       datasets: [
         {
           label: "Turbidity Value",
-      data:[240, 150, 200, 150, 100, 50, 40, 30, 21, 19, 17,15, 19, 14, 12, 11, 10, 5, 15, 25, 10]
- //  data:this.state.turbidity.index()
+      //data:[240, 150, 200, 150, 100, 50, 40, 30, 21, 19, 17,15, 19, 14, 12, 11, 10, 5, 15, 25, 10]
+   data:this.state.turbidity.index()
         }
       ]
     };
@@ -338,8 +335,9 @@ let chartExample1 = {
       labels: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       datasets: [
         {
-          label: "Turbidity Value",
-          data: [ 150, 100, 50, 40, 30, 21, 19]
+          label: "pH Value",
+          //data: [ 150, 100, 50, 40, 30, 21, 19]
+          data:this.state.turbidity.index()
         }
       ]
     };
@@ -389,7 +387,8 @@ let chartExample2 = {
       datasets: [
         {
           label: "PH Value",
-          data:[6.8, 7.0, 6.9, 6.7, 6.8, 7.1,7.0, 7.0, 6.8, 6.5, 7.1,6.8, 7.0, 6.9, 6.7, 6.8, 7.1,7.0, 7.0, 6.8, 6.5]
+         // data:[6.8, 7.0, 6.9, 6.7, 6.8, 7.1,7.0, 7.0, 6.8, 6.5, 7.1,6.8, 7.0, 6.9, 6.7, 6.8, 7.1,7.0, 7.0, 6.8, 6.5]
+         data:this.state.ph.index()
         }
       ]
     };
@@ -400,7 +399,8 @@ let chartExample2 = {
       datasets: [
         {
           label: "PH Value",
-          data: [6.8, 7.0, 6.9, 6.7, 6.8, 7.1,7.2]
+         // data: [6.8, 7.0, 6.9, 6.7, 6.8, 7.1,7.2]
+         data:this.state.ph.index()
         }
       ]
     };

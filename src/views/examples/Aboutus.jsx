@@ -49,13 +49,13 @@ class Aboutus extends React.Component {
         <Col lg="5" md="7">
             <div className="App">
           {/*<p>dfdfgfh</p>*/}
-          <button
+          <button type="button" class="btn btn-danger btn-lg"
             onClick={() => this.nextProperty()}
             disabled={property.index === 
                 data.properties.length-1}
           > Next</button>
 
-          <button 
+          <button type="button" class="btn btn-danger btn-lg"
             onClick={() => this.prevProperty()}
             disabled={property.index === 0}
           > Prev</button>

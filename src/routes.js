@@ -6,8 +6,19 @@ import Maps from "views/examples/Maps.jsx";
 import Login from "views/examples/Login.jsx";
 import Tables from "views/examples/Tables.jsx";
  import Aboutus from "views/examples/Aboutus.jsx";
+ import Meewathura from "views/examples/Meewathura.jsx";
+ import Getambe from "views/examples/Getambe.jsx";
+ import Notification from "views/examples/Notification.jsx";
+
 
 var routes = [
+
+  {
+    path: "/meewathura",
+    component: Meewathura,
+    layout: "/admin"
+  },
+ 
   {
     path: "/index",
     name: "Dashboard",
@@ -59,6 +70,21 @@ var routes = [
     icon: "ni ni-planet text-blue",
     component: Documentation,
     layout: "/admin"
+  },
+  {
+    path: "/notification",
+    name: "Notification",
+    icon: "ni ni-planet text-green",
+    component: Notification,
+    layout: "/admin"
+  },
+  
+  
+  {
+    path: "/getambe",
+    component:Getambe,
+    layout: "/admin"
   }
+ 
 ];
 export default routes;

@@ -6,8 +6,13 @@ import classnames from "classnames";
 import Chart from "chart.js";
 // react plugin used to create charts
 import { Line } from "react-chartjs-2";
+import Notifications from "notifications"
+import { MDBNotification, MDBContainer } from "mdbreact";
+
 //import fire from "config/Fire.jsx";
 import * as firebase from "firebase"
+import mymethod from "views/examples/Tables"
+
 // reactstrap components
 import {
   Card,
@@ -25,8 +30,6 @@ import {
 import {
   chartOptions,
   parseOptions,
- // chartExample1,
-  //chartExample2
 } from "variables/charts.jsx";
 
 import Header from "components/Headers/Header.jsx";
@@ -35,38 +38,28 @@ class Index extends React.Component {
   constructor(props){
     //super();
     super()
+    
     this.ref=firebase.database().ref();
     this.phRef=this.ref.child('ph');
     this.turbRef=this.ref.child('turbidity');
+    this.phRef1=this.ref.child('ph1');
+    this.turbRef1=this.ref.child('turbidity1');
     this.timeRef=this.ref.child('time');
     this.state={
-     // ph:0,
-      //turbidity:0
       activeNav: 1,
       turbidity:[],
       ph:[],
+      turbidity1:[],
+      ph1:[],
       time:[],
       chartExample1Data: "data1",
-      chartExample2Data: "data1"
+      chartExample2Data: "data1",
+      not:5
 
       
     };
   }
 
-  // componentWillMount(){
-    
-
-  //   this.turbRef.on('value', snapshot=>{
-  //     this.setState({
-  //       turbidity:Object.values((snapshot.val())),
-  //     });
-  //   });
-  // }
-
-  // state = {
-  //   activeNav: 1,
-  //   chartExample1Data: "data1"
-  // };
   toggleNavs = (e, index) => {
     e.preventDefault();
     this.setState({
@@ -89,9 +82,21 @@ class Index extends React.Component {
         });
       });
 
+      this.turbRef1.on('value', snapshot=>{
+        this.setState({
+          turbidity1:Object.values((snapshot.val())),
+        });
+      });
+
       this.phRef.on('value', snapshot=>{
         this.setState({
           ph:Object.values((snapshot.val())),
+        });
+      });
+
+      this.phRef1.on('value', snapshot=>{
+        this.setState({
+          ph1:Object.values((snapshot.val())),
         });
       });
     
@@ -101,15 +106,14 @@ class Index extends React.Component {
           //loading: false,
         });
       });
-           
+     // this.Tables.mymethod();
 
     if (window.Chart) {
       parseOptions(Chart, chartOptions());
     }
   }
   
-  render() {
-
+  render() { 
     var colors = {
       gray: {
         100: "#f6f9fc",
@@ -258,10 +262,16 @@ class Index extends React.Component {
     //   };
     // }
   };
+
   
+
+
+
     return (
+      
+      
       <>
-        <Header />
+        <Header/>
         {/* Page content */}
         <Container className="mt--7" fluid>
           <Row>
@@ -278,30 +288,9 @@ class Index extends React.Component {
                     <div className="col">
                       <Nav className="justify-content-end" pills>
                         <NavItem>
-                          {/* <NavLink
-                            className={classnames("py-2 px-3", {
-                              active: this.state.activeNav === 1
-                            })}
-                            href="#pablo"
-                            onClick={e => this.toggleNavs(e, 1)}
-                          >
-                            <span className="d-none d-md-block">Week</span>
-                            <span className="d-md-none">W</span>
-                          </NavLink> */}
                         </NavItem>
                         <NavItem>
                         <span className="white">Today</span>
-                          {/* <NavLink
-                            className={classnames("py-2 px-3", {
-                              active: this.state.activeNav === 2
-                            })}
-                            data-toggle="tab"
-                            href="#pablo"
-                            onClick={e => this.toggleNavs(e, 2)}
-                          >
-                            <span className="d-none d-md-block">Today</span>
-                            <span className="d-md-none">T</span>
-                          </NavLink> */}
                         </NavItem>
                       </Nav>
                     </div>
@@ -336,31 +325,9 @@ class Index extends React.Component {
                     <div className="col">
                       <Nav className="justify-content-end" pills>
                         <NavItem>
-                        
-                          {/* <NavLink
-                            className={classnames("py-2 px-3", {
-                              active: this.state.activeNav === 1
-                            })}
-                            href="#pablo"
-                            onClick={e => this.toggleNavs(e, 1)}
-                          >
-                            <span className="d-none d-md-block">Week</span>
-                            <span className="d-md-none">W</span>
-                          </NavLink> */}
                         </NavItem>
                         <NavItem>
-                        <span className="white">Today</span>
-                          {/* <NavLink
-                            className={classnames("py-2 px-3", {
-                              active: this.state.activeNav === 2
-                            })}
-                            data-toggle="tab"
-                            href="#pablo"
-                            onClick={e => this.toggleNavs(e, 2)}
-                          >
-                            <span className="d-none d-md-block">Today</span>
-                            <span className="d-md-none">T</span>
-                          </NavLink> */}
+                        <span className="white">Today</span>    
                         </NavItem>
                       </Nav>
                     </div>
@@ -381,8 +348,12 @@ class Index extends React.Component {
           </Row>
         </Container>
       </>
-    );
-  }
-}
 
+    
+    );
+    
+    };
+    
+    
+  }
 export default Index;

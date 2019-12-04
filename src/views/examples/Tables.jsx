@@ -17,18 +17,22 @@ import Header from "components/Headers/Header.jsx";
 class Tables extends React.Component {
 
   constructor(props){
-    //super();
+   {/*-----node1------*/}
     super(props)
     this.ref=firebase.database().ref();
-    this.phRef=this.ref.child('ph');
-    this.turbRef=this.ref.child('turbidity');
+    this.phRef=this.ref.child('ph1');
+    this.phRefnew=this.ref.child('ph');
+    this.turbRef=this.ref.child('turbidity1');
+    this.turbRefnew=this.ref.child('turbidity');
     this.timeRef=this.ref.child('time');
+    this.dataRef=this.ref.child('data');
     this.state={
-     // ph:0,
-      //turbidity:0
       ph:[],
       turbidity:[],
+      ph1:[],
+      turbidity1:[],
       time:[],
+      
     };
   }
 
@@ -39,9 +43,25 @@ class Tables extends React.Component {
       });
     });
 
+   
+
+    //node2
+    this.phRefnew.on('value', snapshot=>{
+      this.setState({
+        ph1:Object.values((snapshot.val())),
+      });
+    });
+
     this.turbRef.on('value', snapshot=>{
       this.setState({
         turbidity:Object.values((snapshot.val())),
+      });
+    });
+
+    //node2
+    this.turbRefnew.on('value', snapshot=>{
+      this.setState({
+        turbidity1:Object.values((snapshot.val())),
       });
     });
 
@@ -51,10 +71,6 @@ class Tables extends React.Component {
       });
     });
   }
-
-
-
-  
   
   render() {
 
@@ -68,8 +84,6 @@ class Tables extends React.Component {
             
             <div className="col">
             <div className="Table">
-              {/* <h1>ph:{this.state.ph[1]}</h1>
-              <h1>turbidity:{this.state.turbidity}</h1> */}
             </div>
               <Card className="shadow">
                 <CardHeader className="border-0">
@@ -81,35 +95,49 @@ class Tables extends React.Component {
                       <th><font color="black">TIME</font></th>
                       <th><font color="black">NODE1</font></th>
                       <th><font color="black">NODE2</font></th>
-                      <th><font color="black">NODE3</font></th>
                       <th scope="col" />
                     </tr>
                   </thead>
                   <tbody>
-                  <td>
+                    
+                   <td>
                     {this.state.time.map(inx =>{
                       return(
+                        
                         <tr>
                           <th>{inx}</th>
                         </tr>
                       );
                     })}
                     </td>
-                    <td>
-                  {this.state.ph.map(index=>{
+                    {/*------------node1-----------*/ } 
+                    <td>    
+                   {this.state.ph.map(index=>{
+                    if(index>0){
                       return(
                      <tr>
                        <th>{index-0}</th>
                      </tr>
-                    );
-                  })} 
-                  </td>   
+                     );}
+                   })} 
+                   </td> 
+                   {/*------------node2-----------*/ }
+                   <td>
+                     {this.state.ph1.map(index=>{
+                        if(index>0){
+                          return(
+                      <tr>
+                      <th>{index-0}</th>
+                      </tr>
+                      );}
+                     } )} 
+                   </td>  
                   </tbody>
                 </Table> 
               </Card>
             </div>
           </Row>
-
+         
 
           {/* Dark table */}
           <Row className="mt-5">
@@ -129,13 +157,36 @@ class Tables extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
+                  <td>
+                    {this.state.time.map(inx =>{
+                      return(
+                        
+                        <tr>
+                          <th>{inx}</th>
+                        </tr>
+                      );
+                    })}
+                    </td>
+                    {/*------node1-----*/}
+                    <td>
                   {this.state.turbidity.map(index=>{
                       return(
                      <tr>
                        <td>{index}</td>
                      </tr>
                     );
-                  })}    
+                  })} 
+                  </td> 
+                  {/*------node2-----*/}
+                  <td>
+                  {this.state.turbidity1.map(index=>{
+                      return(
+                     <tr>
+                       <td>{index}</td>
+                     </tr>
+                    );
+                  })}
+                  </td>  
                   </tbody>
                 </Table>    
               </div>
@@ -143,6 +194,9 @@ class Tables extends React.Component {
         </Container>
       </>
     );
-  }
+  }    
 }
+
+
 export default Tables;
+
