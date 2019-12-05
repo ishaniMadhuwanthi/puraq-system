@@ -1,4 +1,4 @@
-
+.
 ├── Documentation
 │   └── documentation.html
 ├── CHANGELOG.md
