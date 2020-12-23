@@ -47,6 +47,7 @@ Sensor data that is measured from sensors are send to the server through node mc
           * Load Tesing
           
 * [User Manual](https://github.com/ishaniMadhuwanthi/puraq-system/blob/master/User%20Manual-PURAQ.pdf)
+     * Product Identification
      * System Overview
      * Specifications (About hardware components)
      
@@ -60,7 +61,7 @@ Sensor data that is measured from sensors are send to the server through node mc
        npm install
        npm start
        
-       Then open [http://localhost:3000/](http://localhost:3000/) to see your application.
+       Then open http://localhost:3000/ to see your application.
     
     To get package.json file
     
