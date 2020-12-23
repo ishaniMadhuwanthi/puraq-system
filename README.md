@@ -29,6 +29,10 @@ In our system, we have targeted pH value and Turbidity value of tanks in water p
 
 If there are deviations of measuring values when comparing with standard vlaues of each tank in particular treatment stage, an alarm is ringing and then technician can get suitable action in purifying cycle.
 
+* **Frontend** : ReactJs 
+* **Database** : Firebase
+* **Hardware Components** : pH Sensor, Turbidity Sensor, Node MCU, LCD Display, Power Supply
+                     
 
 ## Documents
 
