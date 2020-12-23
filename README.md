@@ -12,9 +12,9 @@ Project Collaborators:
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# About Project
+## About Project
 
-We have developed a web application embedded with a hardware system to make automate measuring water quality parameters in water treatment plants. There are so many water quality monitoring parameters used in water treatment plants.They are **pH, turbidity, electrical conductivity,TDS, Residual chlorine, UV intensity, ALUM and LIME , Appearance/ color**. And there are mainly four stages of water treatment process. They are,
+We have developed a web application embedded with a hardware system to make automate measuring water quality parameters in water treatment plants. There are so many water quality monitoring parameters used in water treatment plants.They are **pH, turbidity, electrical conductivity, TDS, Residual chlorine, UV intensity, ALUM and LIME , Appearance/ color**. And there are mainly four stages of water treatment process. They are,
 
 1. Raw Water
 2. Pulsator output
@@ -23,4 +23,34 @@ We have developed a web application embedded with a hardware system to make auto
 
 Nowadays normally these parameters in each stage are measured by the technician manually. And updates those data in log books. So, every 30 minutes they have to go to tanks and take water samples, then again come to tha lab and have to measure values. So it makes many difficulties, specially in rainy days. 
 
+### Solution
+
 In our system, we have targeted pH value and Turbidity value of tanks in water plants. And pH sensors and turbisity sensors are installed in each tank. Then system waiting time is defined to 30 minites. Therefore, every 30 minites system will display parameter values in each tank. And also they are realtimely updated to the database automatically. So there is no need to maintain hand written log books further. If there are deviations of measuring values when comparing with standard vlaues of each tank in particular treatment stage, an alarm is ringing and then technician can get suitable action in purifying cycle.
+
+
+## Documents
+
+Sensor data that is measured from sensors are send to the server through node mcu. The they are updated in the database. Following documents you can get clear idea on how to establish the system. 
+
+* [Design Manual]()
+     * Implementation
+          * System Design
+          * Database Handling
+     * Methodology
+          * Hardware Architecture
+          * Software Architecture
+     * Testing
+          * Integration Testing
+          * Unit Testing
+          * Load Tesing
+          
+* [User Manual]()
+     * System Overview
+     * Specifications (About components)
+     
+
+## Instructions
+
+1. Clone the repository
+2. Open folder using Visual Studio in windows.
+3. Download libraries 
