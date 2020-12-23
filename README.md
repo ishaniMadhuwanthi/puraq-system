@@ -32,7 +32,7 @@ In our system, we have targeted pH value and Turbidity value of tanks in water p
 
 Sensor data that is measured from sensors are send to the server through node mcu. The they are updated in the database. Following documents you can get clear idea on how to establish the system. 
 
-* [Design Manual]()
+* [Design Manual](https://github.com/ishaniMadhuwanthi/puraq-system/blob/master/Design%20Manual-PURAQ.pdf)
      * Implementation
           * System Design
           * Database Handling
@@ -44,7 +44,7 @@ Sensor data that is measured from sensors are send to the server through node mc
           * Unit Testing
           * Load Tesing
           
-* [User Manual]()
+* [User Manual](https://github.com/ishaniMadhuwanthi/puraq-system/blob/master/User%20Manual-PURAQ.pdf)
      * System Overview
      * Specifications (About components)
      
